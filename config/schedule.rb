@@ -19,10 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-#every 1.day, :at => '11:30 am' do
-#	command "ruby /home/jkokenge/projects/bots/newsappsjobs.rb"
-#end
-
-every :hour do
-	command "cd /home/jkokenge/projects/bots/ && ruby newsappsjobs.rb"
+every 1.day, :at => '11:30 am' do
+	command "cd /path/to/bots/ && ruby newsappsjobs.rb"
 end
+
