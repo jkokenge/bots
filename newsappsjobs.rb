@@ -36,21 +36,22 @@ class Twitterbot
 
     def make_jobs
         @job_worksheet.rows.each do |row|
-            if row[1].match(/\d\/\d+\/2013/)
-                unless shorten_link(row[2]).class.to_s == 'BitlyError' 
-                    @jobs << "#{row[0].strip.chomp}, #{row[5]}: #{row[4]} #{shorten_link(row[2])} #newapps #ddj #{short_time}"
+            if row[2].match(/\d\/\d+\/2013/) 
+                unless shorten_link(row[0]).class.to_s == 'BitlyError' 
+                    @jobs << "#{row[1].strip.chomp}, #{row[5]}: #{row[4]} #{shorten_link(row[0])} #newapps #ddj #{short_time}"
                 else
-                    @jobs << "#{row[0].strip.chomp}, #{row[5]}: #{row[4]} #{row[2]} #newapps #ddj #{short_time}"
-                end
-            end
+                    @jobs << "#{row[1].strip.chomp}, #{row[5]}: #{row[4]} #{row[0]} #newapps #ddj #{short_time}"
+                end#unless
+            end#if
         end
 
-    @jobs.sample
-    end
+    puts @jobs.sample
+    
+    end#make_jobs
 
 
-end
+end#Twitterbot class
 
 bot = Twitterbot.new 
-Twitter.update(bot.make_jobs)
-
+#Twitter.update(bot.make_jobs)
+ bot.make_jobs
