@@ -7,7 +7,7 @@ class Twitterbot
   attr_accessor :jobs, :twitter_config, :gdrive_session, :job_worksheet, :bitly
  
     def initialize
-        @twitter_config = Psych.load_file('config.yml')
+        @twitter_config = Psych.load_file('config/config.yml')
         @gdrive_session = GoogleDrive.login(@twitter_config['g_drive_login'], @twitter_config['g_drive_app_pass'])
         @job_worksheet = @gdrive_session.spreadsheet_by_key(@twitter_config['jobs_ws_key']).worksheets[0]
         @bitly = Bitly.new(@twitter_config['bitly_user_name'], @twitter_config['bitly_api_key'])
