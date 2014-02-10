@@ -36,7 +36,7 @@ class Twitterbot
 
     def make_jobs
         @job_worksheet.rows.each do |row|
-            if row[2].match(/\d\/\d+\/2013/) 
+            if row[2].match(/\d\/\d+\/201\d/) 
                 unless shorten_link(row[0]).class.to_s == 'BitlyError' 
                     @jobs << "#{row[1].strip.chomp}, #{row[5]}: #{row[4]} #{shorten_link(row[0])} #newapps #ddj #{short_time}"
                 else
