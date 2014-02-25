@@ -33,8 +33,7 @@ class Twitterbot
       Time.new.to_s.match(/\d\d\-\d\d\s\d\d:\d\d/).to_s
     end
 
-
-    def make_jobs
+def make_jobs
         @job_worksheet.rows.each do |row|
             if row[2].match(/\d\/\d+\/201\d/) 
                 unless shorten_link(row[0]).class.to_s == 'BitlyError' 
@@ -45,13 +44,12 @@ class Twitterbot
             end#if
         end
 
-    puts @jobs.sample
+    @jobs.sample
     
     end#make_jobs
-
-
-end#Twitterbot class
+end
 
 bot = Twitterbot.new 
-#Twitter.update(bot.make_jobs)
- bot.make_jobs
+Twitter.update(bot.make_jobs)
+
+
